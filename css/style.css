@@ -44,7 +44,7 @@ li{
 /*section title*/
 #section_h1{
     height: 50vh;
-    background-image: url("/sources/chemist_bg.jpg");
+    background-image: url(/sources/chemist_bg.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -62,7 +62,7 @@ li{
 
 /* section productos y cards*/
 #section_productos{
-    background-image: url("/sources/bg2.jpg");
+    background-image: url(/sources/bg2.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
