@@ -68,6 +68,10 @@ stock.push(producto1, producto2, producto3, producto4, producto5, producto6, pro
 const locales = [sucursal1, sucursal2, sucursal3, sucursal4, sucursal5]
 
 
+
+
+
+
 //VARIABLES
 let productos_stock = document.getElementById("productos") //PRODUCTOS EN STOCK
 
@@ -335,21 +339,19 @@ btn_vaciar.addEventListener("click", () =>{
     cancelButtonColor: '#d33',
     confirmButtonText: 'Vaciar'
   }).then((result) => {
-    if (result.isConfirmed) {      
+    if (result.isConfirmed) { 
+      localStorage.clear();     
       Swal.fire(
         'Carrito Vacio',
         'Sus artículos se han eliminado',
         'success'
       )       
+      productos_carrito = []    
+      llenar_carrito(productos_carrito).remove()    
       
     }
     
-  })
-      
-  productos_carrito = []    
-  llenar_carrito(productos_carrito).remove()    
-  localStorage.clear();
-   
+  })        
      
 })
 
