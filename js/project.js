@@ -238,10 +238,10 @@ function llenar_carrito(array){
             reverseButtons: true
           }).then((result) => {
             if (result.isConfirmed) {
-                let productosIndex = productos_carrito.findIndex(element => element.id == id)
-                productos_carrito.splice(productosIndex, 1)        
-                localStorage.clear();
-                llenar_carrito(productos_carrito)   
+              let productosIndex = productos_carrito.findIndex(element => element.id == id)
+              productos_carrito.splice(productosIndex, 1)        
+              localStorage.setItem("productos_carrito", JSON.stringify(productos_carrito))
+              llenar_carrito(productos_carrito)              
               swalWithBootstrapButtons.fire(
                 'Borrado!',
                 'El producto Ha sido quitado del Carrito',
@@ -287,6 +287,10 @@ function total_compra(array){
 
 btn_catalogo.addEventListener("click", ()=>{
     mostrarCatalogo(stock)
+    localStorage.setItem("destacados", JSON.stringify(stock) )
+    if(localStorage.getItem("destacados")){
+    destacados = JSON.parse(localStorage.getItem("destacados"))
+}
 })
 
 //--------------- BOTON PARA OCULTAR EL CATALOGO
@@ -343,7 +347,7 @@ btn_vaciar.addEventListener("click", () =>{
   })
       
   productos_carrito = []    
-  llenar_carrito(productos_carrito).remove()     
+  llenar_carrito(productos_carrito).remove()    
   localStorage.clear();
    
      
@@ -353,6 +357,7 @@ btn_vaciar.addEventListener("click", () =>{
 //STORAGE
 // -------------- SETEANDO STORAGE
 localStorage.getItem("destacados") ? destacados = JSON.parse(localStorage.getItem("destacados")) :  (console.log("Seteando por primera vez el array"))&&(destacados.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11))&&(localStorage.setItem("stock", JSON.stringify(destacados) )); //UTILICÉ OPERADORES TERNARIOS Y AND &&
+
 
 
 
